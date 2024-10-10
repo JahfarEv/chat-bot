@@ -84,7 +84,7 @@ client.on("message", async (message) => {
       const doctorStatus = await fetchDoctorStatus(doctor._id);
 
       if (doctorStatus) {
-        const waitingRoomLink = `https://vyzo-waitingroom.netlify.app/details?id=${doctor._id}`;
+        const waitingRoomLink = `https://waitingroom.vyzo.in/details?id=${doctor._id}`;
         const tokenMessage = doctorStatus.currentToken
           ? `നിലവിലെ ടോക്കൺ നമ്പർ: ${doctorStatus.currentToken}`
           : `നിലവിലെ സ്ഥിതി: ${doctorStatus.doctorStatus}`;
@@ -95,7 +95,7 @@ ${waitingRoomLink}`);
         await client.sendMessage(message.from, `Dr. ${doctor.name} യുടെ ടോക്കൻ ലഭിക്കാൻ കഴിയുന്നില്ല.`);
       }
     } else {
-      await client.sendMessage(message.from, "അഭ്യസ്തൻ നമ്പർ അസാധുവാണ്.");
+      await client.sendMessage(message.from, "താങ്കൾ നൽകിയ നമ്പർ അസാധുവാണ്. ദയവായി ശരിയായ നമ്പർ തിരഞ്ഞെടുക്കുക.");
     }
   }
 
@@ -130,7 +130,7 @@ app.get("/doctors", async (req, res) => {
 });
 
 // പോർട്ടിൽ 3000 എക്സ്പ്രസ് സെർവർ ആരംഭിക്കുക
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port: ${PORT}`);
-});
+// const PORT = process.env.PORT 
+// app.listen(PORT, () => {
+//   console.log(`Server running on port: ${PORT}`);
+// });
